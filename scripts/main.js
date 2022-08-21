@@ -56,34 +56,34 @@ function addAttunementButtonIfAttunementAvailable(item, html, actor) {
   //     return;
   //   }
   console.log(item.id);
-  console.log(item.data.data.name);
+  console.log(item.data?.data?.name);
   console.log(itemAttunementStatus);
   console.log("-------------");
   if (itemAttunementStatus === STATUS_ATTUNED) {
+    console.log(item);
     $(`
     <a class="item-control item-give-module" title="Toggle attunement">
       <i class="fas fa-sun attuned"></i>
     </a>
   `).insertAfter(
       html.find(
-        `.inventory .item [data-item-id='${item.key}'] .item-control.item-edit`
+        `.inventory ol[data-item-id='${item.id}'] .item-control.item-edit`
       )
     );
     html
       .find(".item-control.item-give-module")
       .on("click", attunementToggleHandle.bind(actor));
   } else if (itemAttunementStatus === STATUS_ATTUNEMENT_REQUIRED) {
+    console.log(item);
+
     $(`
     <a class="item-control item-give-module" title="Toggle attunement">
       <i class="fas fa-sun not-attuned"></i>
     </a>
-  `).insertAfter(
-      html.find(
-        `.inventory [data-item-id='${item.data.id}']  .item-control.item-edit`
-      )
-    );
+  `).insertAfter(html.find(`.inventory li[data-item-id='${item.data.id}'] `));
     html
       .find(".inventory .item-control.item-give-module")
       .on("click", attunementToggleHandle.bind(actor));
+  } else if (itemAttunementStatus === 0) {
   }
 }
