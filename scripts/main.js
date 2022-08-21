@@ -1,10 +1,15 @@
 const STATUS_ATTUNED = 2;
-const STATUS_ATTUNMENT_REQUIRED = 1;
+const STATUS_ATTUNEMENT_REQUIRED = 1;
 
 const ATTUNEMENT_REQUIRED_ICON = `fas fa-sun not-attuned`;
 const ATTUNED_ICON = `fas fa-sun attuned`;
 
 Hooks.on("renderActorSheet5eCharacter", (sheet, html, character) => {
+  console.log("character");
+  console.log(character);
+  console.log("sheet");
+  console.log(sheet);
+
   addQuickAttunementButton(html, sheet.actor);
 });
 
@@ -34,18 +39,11 @@ function attunementToggleHandle(e) {
 
   const currentAttunementStatus = currentItem?.data?.data?.attunement;
 
-  console.log();
-  console.log(currentAttunementStatus);
-
-  if (currentAttunementStatus === STATUS_ATTUNMENT_REQUIRED) {
-    console.log("QA+ - Changing from attunement required to attunement");
+  if (currentAttunementStatus === STATUS_ATTUNEMENT_REQUIRED) {
+    console.log("QuickAttunement - Attunement required -> attuned");
     currentItem.data.data.attunement = STATUS_ATTUNED;
   } else if (currentAttunementStatus === STATUS_ATTUNED) {
-    console.log("QA+ - Changing from attunement to attunement required");
-    currentItem.data.data.attunement = STATUS_ATTUNMENT_REQUIRED;
+    console.log("QuickAttunement - Attuned -> attunement required");
+    currentItem.data.data.attunement = STATUS_ATTUNEMENT_REQUIRED;
   }
-  console.log("QA+ - current item");
-  console.log(currentItem);
 }
-
-let attunementPath = `Item.data.data.attunement`;
