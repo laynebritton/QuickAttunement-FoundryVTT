@@ -1,0 +1,15 @@
+{
+  "name": "quick-attunment",
+  "title": "Quick Attunment Change",
+  "description": "Change item attunement status in one click",
+  "author": "laynebritton",
+  "url": "https://github.com/laynebritton/QuickAttunement-FoundryVTT",
+  "bugs": "https://github.com/laynebritton/QuickAttunement-FoundryVTT/issues",
+  "version": "0.1.0",
+  "esmodules": ["scripts/main.js"],
+  "system": ["dnd5e"],
+  "manifest": "https://raw.githubusercontent.com/laynebritton/QuickAttunement-FoundryVTT/main/module.json",
+  "protected": false,
+  "coreTranslation": false,
+  "library": false
+}
