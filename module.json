@@ -9,6 +9,7 @@
   "esmodules": ["scripts/main.js"],
   "system": ["dnd5e"],
   "manifest": "https://raw.githubusercontent.com/laynebritton/QuickAttunement-FoundryVTT/main/module.json",
+  "download": "https://github.com/laynebritton/QuickAttunement-FoundryVTT/archive/refs/tags/v0.1.0.zip",
   "protected": false,
   "coreTranslation": false,
   "library": false
