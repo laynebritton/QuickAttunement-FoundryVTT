@@ -79,4 +79,7 @@ function addAttunementButtonIfAttunementAvailable(item, html, actor) {
       .find(".item-control.item-give-module")
       .on("click", attunementToggleHandle.bind(actor));
   }
+  html
+    .find(`.item[data-item-id="${item.id}"] .item-detail.attunement`)
+    .on("click", console.log("here"));
 }
