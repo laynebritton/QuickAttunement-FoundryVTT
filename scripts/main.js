@@ -14,6 +14,8 @@ Hooks.on("renderActorSheet5eCharacter", (sheet, html, character) => {
 });
 
 function addQuickAttunementButton(html, actor) {
+  console.log("actor");
+  console.log(actor);
   $(`
       <a class="item-control item-give-module" title="Toggle attunement">
         <i class="fas fa-sun attuned"></i>
@@ -40,10 +42,10 @@ function attunementToggleHandle(e) {
   const currentAttunementStatus = currentItem?.data?.data?.attunement;
 
   if (currentAttunementStatus === STATUS_ATTUNEMENT_REQUIRED) {
-    console.log("QuickAttunement - Attunement required -> attuned");
+    console.log("QuickAttunement | Attunement required -> attuned");
     currentItem.data.data.attunement = STATUS_ATTUNED;
   } else if (currentAttunementStatus === STATUS_ATTUNED) {
-    console.log("QuickAttunement - Attuned -> attunement required");
+    console.log("QuickAttunement | Attuned -> attunement required");
     currentItem.data.data.attunement = STATUS_ATTUNEMENT_REQUIRED;
   }
 }
