@@ -51,12 +51,16 @@ function attunementToggleHandle(e) {
 
 function addAttunementButtonIfAttunementAvailable(item, html, actor) {
   //   console.log(item);
+  console.log(html);
   const itemAttunementStatus = item.data?.data?.attunement || 0;
   //   if (!itemAttunementStatus || itemAttunementStatus <= 0) {
   //     return;
   //   }
+  if (itemAttunementStatus === 0) {
+    return;
+  }
   console.log(item.id);
-  console.log(item.data?.data?.name);
+  console.log(item.data?.name);
   console.log(itemAttunementStatus);
   console.log("-------------");
   if (itemAttunementStatus === STATUS_ATTUNED) {
