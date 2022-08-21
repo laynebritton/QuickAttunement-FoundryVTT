@@ -12,7 +12,7 @@ function addQuickAttunementButton(html, actor) {
   console.log("actor");
   console.log(actor);
   actor.items.map((item) => {
-    addAttunementButtonIfAttunementAvailable(item, actor);
+    addAttunementButtonIfAttunementAvailable(item, html, actor);
   });
 
   //   $(`
@@ -49,15 +49,16 @@ function attunementToggleHandle(e) {
   }
 }
 
-function addAttunementButtonIfAttunementAvailable(item, actor) {
-  console.log(item);
+function addAttunementButtonIfAttunementAvailable(item, html, actor) {
+  //   console.log(item);
   const itemAttunementStatus = item.data?.data?.attunement || 0;
-  if (!!itemAttunementStatus || itemAttunementStatus <= 0) {
-    return;
-  }
+  //   if (!itemAttunementStatus || itemAttunementStatus <= 0) {
+  //     return;
+  //   }
   console.log(item.id);
   console.log(item.data.data.name);
   console.log(itemAttunementStatus);
+  console.log("-------------");
   if (itemAttunementStatus === STATUS_ATTUNED) {
     $(`
     <a class="item-control item-give-module" title="Toggle attunement">
