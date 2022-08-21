@@ -51,7 +51,12 @@ function attunementToggleHandle(e) {
 
 function addAttunementButtonIfAttunementAvailable(item, actor) {
   console.log(item);
-  const itemAttunementStatus = item.value.data.data.attunement;
+  const itemAttunementStatus = item.data?.data?.attunement || 0;
+  console.log(itemAttunementStatus);
+  if (!!itemAttunementStatus) {
+    return;
+  }
+
   if (itemAttunementStatus === STATUS_ATTUNED) {
     $(`
     <a class="item-control item-give-module" title="Toggle attunement">
@@ -69,7 +74,7 @@ function addAttunementButtonIfAttunementAvailable(item, actor) {
       <i class="fas fa-sun not-attuned"></i>
     </a>
   `).insertAfter(
-      html.find(`[data-item-id='${item.key}']  .item-control.item-edit`)
+      html.find(`[data-item-id='${item.data.id}']  .item-control.item-edit`)
     );
     html
       .find(".item-control.item-give-module")
