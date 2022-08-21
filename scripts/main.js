@@ -4,7 +4,7 @@ Hooks.on("renderActorSheet5eCharacter", (sheet, html, character) => {
 
 function addQuickAttunementButton(html, actor) {
   $(`
-      <a class="item-control item-give-module" title="Toggle attunment">
+      <a class="item-control item-give-module" title="Toggle attunement">
         <i class="fas fa-sun attuned"></i>
       </a>
     `).insertAfter(
@@ -17,10 +17,17 @@ function addQuickAttunementButton(html, actor) {
 
 function attunementToggleHandle(e) {
   console.log("oh hi");
+  const currentActor = this;
+
   e.preventDefault();
+
   const currentItemId = e.currentTarget.closest(".item").dataset.itemId;
-  console.log("item data set");
-  console.log(e.currentTarget.closest(".item").dataset);
+  const currentItem = currentActor.items.find(
+    (item) => item.id === currentItemId
+  );
+
+  console.log("QA+ - current item");
+  console.log(currentItem);
   console.log(currentItemId);
 }
 
