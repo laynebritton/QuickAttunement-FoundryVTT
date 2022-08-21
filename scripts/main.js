@@ -1,29 +1,27 @@
 Hooks.on("renderActorSheet5eCharacter", (sheet, html, character) => {
-  let sheetClasses = sheet.options.classes;
-  if (sheetClasses[0] === "tidy5e") {
-    addGiveItemButtonTidy(html, sheet.actor);
-  } else {
-    addGiveItemButton(html, sheet.actor);
-  }
-  addGiveCurrency(html, sheet.actor);
+  addQuickAttunementButton(html, sheet.actor);
 });
 
-function addGiveItemButton(html, actor) {
+function addQuickAttunementButton(html, actor) {
   $(`
-      <a class="item-control item-give-module" title="Give item pee">
-        <i class="fas fa-hands-helping"></i>
+      <a class="item-control item-give-module" title="Toggle attunment">
+        <i class="fas fa-sun attuned"></i>
       </a>
     `).insertAfter(
     html.find(".inventory ol:not(.currency-list)  .item-control.item-edit")
   );
   html
     .find(".item-control.item-give-module")
-    .on("click", giveItemHandler.bind(actor));
+    .on("click", attunementToggleHandle.bind(actor));
 }
 
-function giveItemHandler(e) {
+function attunementToggleHandle(e) {
   console.log("oh hi");
   e.preventDefault();
   const currentItemId = e.currentTarget.closest(".item").dataset.itemId;
+  console.log("item data set");
+  console.log(e.currentTarget.closest(".item").dataset);
   console.log(currentItemId);
 }
+
+let notAttunedIcon = `fas fa-sun not-attuned`;
