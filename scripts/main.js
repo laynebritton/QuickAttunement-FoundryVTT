@@ -62,9 +62,9 @@ function attunementToggleHandle(e) {
 
 function toggleAttunementIconClasses(id) {
   $(
-    html.find(`.item[data-item-id="${id}"] .item-detail.attunement .fas`)
-  ).toggleClass(ATTUNED_CLASSNAME);
+    `.item[data-item-id="${id}"] .item-detail.attunement .fas`)
+  .toggleClass(ATTUNED_CLASSNAME);
   $(
-    html.find(`.item[data-item-id="${id}"] .item-detail.attunement .fas`)
-  ).toggleClass(NOT_ATTUNED_CLASSNAME);
+    `.item[data-item-id="${id}"] .item-detail.attunement .fas`)
+  .toggleClass(NOT_ATTUNED_CLASSNAME);
 }
