@@ -49,5 +49,20 @@ function addAttunementButtonIfAttunementAvailable(item, html, actor) {
     html
       .find(`.item[data-item-id="${item.id}"] .item-detail.attunement`)
       .on("click", attunementToggleHandle.bind(actor));
+
+    html
+      .find(`.item[data-item-id="${item.id}"] .item-detail.attunement`)
+      .on("click", () => {
+        toggleAttunementIconClasses(item.id);
+      });
   }
+}
+
+function toggleAttunementIconClasses(id) {
+  $(
+    html.find(`.item[data-item-id="${id}"] .item-detail.attunement .fas`)
+  ).toggleClass("attuned");
+  $(
+    html.find(`.item[data-item-id="${id}"] .item-detail.attunement .fas`)
+  ).toggleClass("not-attuned");
 }
