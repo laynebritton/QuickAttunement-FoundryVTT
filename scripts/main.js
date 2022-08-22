@@ -1,10 +1,10 @@
 const STATUS_ATTUNED = 2;
 const STATUS_ATTUNEMENT_REQUIRED = 1;
 
-const ATTUNEMENT_REQUIRED_ICON = `fas fa-sun not-attuned`;
-const ATTUNED_ICON = `fas fa-sun attuned`;
+const ATTUNED_CLASSNAME = "attuned";
+const NOT_ATTUNED_CLASSNAME = "not-attuned";
 
-Hooks.on("renderActorSheet5eCharacter", (sheet, html, character) => {
+Hooks.on("renderActorSheet5eCharacter", (sheet, html) => {
   addQuickAttunementButton(html, sheet.actor);
 });
 
@@ -12,28 +12,6 @@ function addQuickAttunementButton(html, actor) {
   actor.items.map((item) => {
     addAttunementButtonIfAttunementAvailable(item, html, actor);
   });
-}
-
-function attunementToggleHandle(e) {
-  console.log("QuickAttunement | Attunement toggle start");
-  const currentActor = this;
-
-  e.preventDefault();
-
-  const currentItemId = e.currentTarget.closest(".item").dataset.itemId;
-  const currentItem = currentActor.items.find(
-    (item) => item.id === currentItemId
-  );
-
-  const currentAttunementStatus = currentItem?.data?.data?.attunement;
-
-  if (currentAttunementStatus === STATUS_ATTUNEMENT_REQUIRED) {
-    console.log("QuickAttunement | Attunement required -> attuned");
-    currentItem.data.data.attunement = STATUS_ATTUNED;
-  } else if (currentAttunementStatus === STATUS_ATTUNED) {
-    console.log("QuickAttunement | Attuned -> attunement required");
-    currentItem.data.data.attunement = STATUS_ATTUNEMENT_REQUIRED;
-  }
 }
 
 function addAttunementButtonIfAttunementAvailable(item, html, actor) {
@@ -50,6 +28,7 @@ function addAttunementButtonIfAttunementAvailable(item, html, actor) {
       .find(`.item[data-item-id="${item.id}"] .item-detail.attunement`)
       .on("click", attunementToggleHandle.bind(actor));
 
+    // TODO for Version 2: Find a more elegant way to handle this than toggling the classes in a separate onClick
     html
       .find(`.item[data-item-id="${item.id}"] .item-detail.attunement`)
       .on("click", () => {
@@ -58,11 +37,34 @@ function addAttunementButtonIfAttunementAvailable(item, html, actor) {
   }
 }
 
+function attunementToggleHandle(e) {
+  console.log("QuickAttunement | Attunement toggle start");
+  const currentActor = this;
+
+  e.preventDefault();
+
+  const currentItemId = e.currentTarget.closest(".item").dataset.itemId;
+  const currentItem = currentActor.items.find(
+    (item) => item.id === currentItemId
+  );
+
+  const currentAttunementStatus = currentItem?.data?.data?.attunement;
+
+  // TODO for Version 2: Update this through hooks instead of directly modifying the object.
+  if (currentAttunementStatus === STATUS_ATTUNEMENT_REQUIRED) {
+    console.log("QuickAttunement | Attunement required -> attuned");
+    currentItem.data.data.attunement = STATUS_ATTUNED;
+  } else if (currentAttunementStatus === STATUS_ATTUNED) {
+    console.log("QuickAttunement | Attuned -> attunement required");
+    currentItem.data.data.attunement = STATUS_ATTUNEMENT_REQUIRED;
+  }
+}
+
 function toggleAttunementIconClasses(id) {
   $(
     html.find(`.item[data-item-id="${id}"] .item-detail.attunement .fas`)
-  ).toggleClass("attuned");
+  ).toggleClass(ATTUNED_CLASSNAME);
   $(
     html.find(`.item[data-item-id="${id}"] .item-detail.attunement .fas`)
-  ).toggleClass("not-attuned");
+  ).toggleClass(NOT_ATTUNED_CLASSNAME);
 }
