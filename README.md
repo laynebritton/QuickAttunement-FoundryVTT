@@ -1,6 +1,6 @@
 # QuickAttunement for Foundry Virtual Table Top
 
-A module to allow changing attunement to an item in one click using the existing attunement indicator. 
+A module for [Foundry VTT](https://foundryvtt.com/) to change a character's attunement to an item in one click using the existing attunement indicator. 
 
 No new UI elements added.
 
