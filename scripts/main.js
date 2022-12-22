@@ -15,7 +15,7 @@ function addQuickAttunementButton(html, actor) {
 }
 
 function addAttunementButtonIfAttunementAvailable(item, html, actor) {
-  const itemAttunementStatus = item.data?.data?.attunement || 0;
+  const itemAttunementStatus = item.system?.attunement || 0;
 
   if (itemAttunementStatus === 0) {
     return;
@@ -48,15 +48,15 @@ function attunementToggleHandle(e) {
     (item) => item.id === currentItemId
   );
 
-  const currentAttunementStatus = currentItem?.data?.data?.attunement;
+  const currentAttunementStatus = currentItem?.system?.attunement;
 
   // TODO for Version 2: Update this through hooks instead of directly modifying the object.
   if (currentAttunementStatus === STATUS_ATTUNEMENT_REQUIRED) {
     console.log("QuickAttunement | Attunement required -> attuned");
-    currentItem.data.data.attunement = STATUS_ATTUNED;
+    currentItem.system.attunement = STATUS_ATTUNED;
   } else if (currentAttunementStatus === STATUS_ATTUNED) {
     console.log("QuickAttunement | Attuned -> attunement required");
-    currentItem.data.data.attunement = STATUS_ATTUNEMENT_REQUIRED;
+    currentItem.system.attunement = STATUS_ATTUNEMENT_REQUIRED;
   }
 }
 
