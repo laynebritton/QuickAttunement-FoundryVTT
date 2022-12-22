@@ -5,7 +5,7 @@
   "author": "layne",
   "url": "https://github.com/laynebritton/QuickAttunement-FoundryVTT",
   "bugs": "https://github.com/laynebritton/QuickAttunement-FoundryVTT/issues",
-  "version": "1.0.1",
+  "version": "1.1.1",
   "compatibleCoreVersion": "9.269",
   "esmodules": ["scripts/main.js"],
   "system": ["dnd5e"],
