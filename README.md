@@ -1,8 +1,8 @@
 # QuickAttunement for Foundry Virtual Table Top
 
-This repo is **deprecated**, this functionality now ships standard with Foundry VTT
+This repo is **deprecated**, this functionality now ships standard with Foundry VTT. 
 
-Keeping this repo for the history.
+As such, this project will not be updated for future releases of Foundry VTT. Keeping this repo up for compatability for players on old releases.
 
 ---
 
