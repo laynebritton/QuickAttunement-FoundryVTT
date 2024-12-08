@@ -2,7 +2,7 @@
 
 This repo is **deprecated**, this functionality now ships standard with Foundry VTT. 
 
-As such, this project will not be updated for future releases of Foundry VTT. Keeping this repo up for compatability for players on old releases.
+As such, this project **will not be updated** for future releases of Foundry VTT. Keeping this repo up for compatability for players on old releases.
 
 ---
 
